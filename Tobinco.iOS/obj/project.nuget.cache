@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "dgSpecHash": "tha0LDpkCAnHIVan0HCyUCqvp0sXCTc1S4bUNvgfcb8/OSLHM00MkM3orRnVNSjBxNBH1fuKNMZlKGZTBKGqDw==",
+  "success": true,
+  "projectFilePath": "/Users/joseph/Desktop/Joseph projects/Tobinco/Tobinco.iOS/Tobinco.iOS.csproj",
+  "expectedPackageFiles": [
+    "/Users/joseph/.nuget/packages/sharpnado.forms.horizontallistview/1.8.2/sharpnado.forms.horizontallistview.1.8.2.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sharpnado.shadows/1.2.0/sharpnado.shadows.1.2.0.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sharpnado.taskmonitor/1.0.1/sharpnado.taskmonitor.1.0.1.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sqlite-net-pcl/1.8.116/sqlite-net-pcl.1.8.116.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sqlitepclraw.bundle_green/2.0.4/sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/sqlitepclraw.provider.dynamic_cdecl/2.0.4/sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/system.buffers/4.4.0/system.buffers.4.4.0.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/system.componentmodel/4.3.0/system.componentmodel.4.3.0.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/thomaslevesque.weakevent/4.1.0/thomaslevesque.weakevent.4.1.0.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/webp.touch/1.0.8/webp.touch.1.0.8.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.communitytoolkit/2.0.1/xamarin.communitytoolkit.2.0.1.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.essentials/1.7.1/xamarin.essentials.1.7.1.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.ffimageloading/2.4.11.982/xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.ffimageloading.forms/2.4.11.982/xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.forms/5.0.0.2337/xamarin.forms.5.0.0.2337.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.forms.pancakeview/2.3.0.759/xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512",
+    "/Users/joseph/.nuget/packages/xamarin.plugin.sharedtransitions/2.4.0/xamarin.plugin.sharedtransitions.2.4.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Essentials from 1.7.2 to 1.7.1. Reference the package directly from the project to select a different version. \n Tobinco.iOS -> Tobinco -> Xamarin.Essentials (>= 1.7.2) \n Tobinco.iOS -> Xamarin.Essentials (>= 1.7.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 5.0.0.2401 to 5.0.0.2337. Reference the package directly from the project to select a different version. \n Tobinco.iOS -> Tobinco -> Xamarin.Forms (>= 5.0.0.2401) \n Tobinco.iOS -> Xamarin.Forms (>= 5.0.0.2337)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
+}

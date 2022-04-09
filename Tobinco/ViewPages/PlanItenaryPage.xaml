@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:Tobinco.Converters"
+    xmlns:renderedViews="clr-namespace:Sharpnado.HorizontalListView.RenderedViews;assembly=Sharpnado.HorizontalListView"
+    xmlns:localfont="clr-namespace:Tobinco.EmbeddedFont"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Padding="0,20,0,0"
+    BackgroundColor="#f6f6f6"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.PlanItenaryPage">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ColorConverter x:Key="IsSelectedConverter"/>
+             <converter:VisibilityConverter x:Key="VisibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+           <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                <Grid RowDefinitions="Auto, Auto, Auto,Auto, *" >
+
+                    <Image
+                        HorizontalOptions="EndAndExpand"
+                        Source="bgImage"
+                        HeightRequest="150"/>
+                   
+      <yummy:PancakeView
+                    Margin="0,30,0,0"
+                    Padding="10,40,10,20"
+                    BackgroundColor="#E5E5E5"
+                    CornerRadius="40,40,0,0"
+                    Grid.Row="1"
+                    VerticalOptions="FillAndExpand">
+
+            <Grid
+                RowSpacing="5"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+
+               <Grid
+                    RowDefinitions="Auto,Auto"
+                    ColumnDefinitions="3*,4*,3*">
+
+                   <Label Text="Select Date"
+                          FontSize="18"
+                          FontAttributes="Bold"
+                          Grid.ColumnSpan="3"
+                          TextColor="{StaticResource ThemeBlueColor}"/>
+
+                    <Button HorizontalOptions="EndAndExpand"
+                            Grid.Row="1"
+                            FontFamily="LocalIcons"
+                            Command="{Binding PreviousMonthCommand}"
+                            Visual="Material"
+                            Grid.Column="0"
+                            FontSize="30"
+                            BackgroundColor="Transparent"
+                            Text="{x:Static localfont:MaterialIconClass.ArrowLeftBoldCircleOutline}"
+                            TextColor="{StaticResource ThemeBlueColor}">
+
+                         <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                Value="1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                Value="0.8" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Button>
+                    <Label
+                        x:Name="DayYear"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource ThemeBlueColor}"
+                        Grid.Column="1"
+                        FontSize="20"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding HeaderDateTime,StringFormat='{0: MMM, yyyy}',Mode=TwoWay}"/>
+
+                <Button
+                    HorizontalOptions="StartAndExpand"
+                    Grid.Row="1"
+                    FontFamily="LocalIcons"
+                    Command="{Binding NextMonthCommand}"
+                    Visual="Material"
+                    Grid.Column="2"
+                    FontSize="30"
+                    TextColor="{StaticResource ThemeBlueColor}"
+                    Text="{x:Static localfont:MaterialIconClass.ArrowRightBoldCircleOutline}"
+                    BackgroundColor="Transparent" >
+
+                     <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                Value="1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                Value="0.8" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                    </Button>
+                </Grid>
+
+               <Grid
+                Grid.Row="1"
+                RowDefinitions="70">
+                 
+                 <CollectionView
+                         Margin="0,10,0,0"
+                         HeightRequest="60"
+                         SelectionMode="Single"
+                         SelectionChanged="DateSeleted"
+                         SelectedItems="{Binding SelectedDates, Mode=TwoWay}"
+                         ItemsSource="{Binding TimeContainer,Mode=TwoWay}">
+                        
+                          <CollectionView.ItemsLayout>
+
+                       <GridItemsLayout
+                           Orientation="Horizontal"
+                           HorizontalItemSpacing="5"
+                           VerticalItemSpacing="10"
+                           Span="1" />
+
+                    </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                  <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                   <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                                Value="5" />
+                                                        <Setter TargetName="DatePancake"
+                                                                Property="yummy:PancakeView.BackgroundColor"
+                                                                Value="White"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                            Value="5" />
+                                                        <Setter TargetName="DatePancake"
+                                                                Property="yummy:PancakeView.BackgroundColor"
+                                                                Value="#1A6130"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                            </VisualStateGroup>
+                                       </VisualStateManager.VisualStateGroups>
+
+                                <yummy:PancakeView
+                                    Padding="2"
+                                    x:Name="DatePancake"
+                                    HeightRequest="80"
+                                    WidthRequest="70"
+                                    BackgroundColor="White"
+                                    Border="{yummy:BorderMarkup Color={StaticResource colorBlack}, Thickness='1'}"
+                                    CornerRadius="5">
+
+                                    <StackLayout>
+                                        <Label
+                                            TextColor="{Binding Selected,Converter={StaticResource IsSelectedConverter}}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding Date}"/>
+
+                                        <Label
+                                            TextColor="{Binding Selected,Converter={StaticResource IsSelectedConverter}}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding Day}"/>
+
+                                        
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                              </Grid>
+                            </DataTemplate>
+                       </CollectionView.ItemTemplate>
+                </CollectionView>
+             </Grid>
+
+            <Grid
+                Grid.Row="2"
+                Margin="0,20,0,0"
+                RowDefinitions="250">
+
+                <Label
+                    HorizontalTextAlignment="Start"
+                    FontSize="20"
+                    TextColor="{StaticResource ThemeBlueColor}"
+                    FontAttributes="Bold"
+                    Text=" Select Time"/>
+
+                
+
+                 <CollectionView
+                         Margin="0,30,0,0"
+                         SelectionMode="Single"
+                         SelectionChanged="CollectTimeChange"
+                         SelectedItems="{Binding SelectedTimes, Mode=TwoWay}"
+                         ItemsSource="{Binding ScheduleTimeModelContainer}">
+                        
+                          <CollectionView.ItemsLayout>
+
+                       <GridItemsLayout
+                           Orientation="Vertical"
+                           HorizontalItemSpacing="1"
+                           VerticalItemSpacing="10"
+                           Span="3" />
+
+                    </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                              <StackLayout>
+                                  <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                   <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                            Value="5" />
+                                                        <Setter TargetName="TimePancake"
+                                                                Property="yummy:PancakeView.BackgroundColor"
+                                                                Value="White"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                            Value="5" />
+                                                        <Setter TargetName="TimePancake"
+                                                                Property="yummy:PancakeView.BackgroundColor"
+                                                                Value="#1A6130"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                            </VisualStateGroup>
+                                       </VisualStateManager.VisualStateGroups>
+
+                                    <yummy:PancakeView
+                                           x:Name="TimePancake"
+                                            Padding="4"
+                                            BackgroundColor="White"
+                                            Border="{yummy:BorderMarkup Color={StaticResource colorWhite}, Thickness='1'}"
+                                            CornerRadius="5">
+
+                                           <Label FontSize="16"
+                                                  Text="{Binding DateTimeItems,StringFormat='{0: HH:MM tt}'}"
+                                                  HorizontalTextAlignment="Center" />
+                                    </yummy:PancakeView>
+                               </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                 </CollectionView>
+            </Grid>
+
+               <Grid
+                Grid.Row="3"
+                Margin="0,20,0,0">
+
+                    <CollectionView
+                                x:Name="eventList"
+                                HeightRequest="60"
+                                WidthRequest="200"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding HospitalSelectedItem}"
+                                SelectionChanged="schduleHospitalClicked"
+                                ItemsSource="{Binding hospitalList}">
+
+                        <CollectionView.ItemsLayout>
+                           <GridItemsLayout Orientation="Horizontal"
+                                            HorizontalItemSpacing="10"
+                                            VerticalItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentView>
+                                         
+                                        <yummy:PancakeView
+                                            Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                            CornerRadius="10"
+                                            Margin="0,5"
+                                            Padding="10"
+                                            BackgroundColor="{StaticResource GreenColor}" >
+
+                                            <Label
+                                                Text="{Binding HospitalName}"
+                                                FontFamily="MaterialIcons"
+                                                TextTransform="Uppercase"
+                                                VerticalOptions="CenterAndExpand"
+                                                FontSize="24"
+                                                FontAttributes="Bold"
+                                                TextColor="#F8F8F8"/>
+                                          
+                                        </yummy:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Grid>
+                <CollectionView
+                            x:Name="DoctorEventList"
+                            ItemsSource="{Binding doctorList}"
+                            SelectionMode="Single"
+                            HeightRequest="80"
+                            Grid.Row="4"
+                            SelectionChanged="DoctorListClicked"
+                            VerticalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemsLayout>
+                               <GridItemsLayout Orientation="Horizontal"
+                                                Span="1"
+                                                HorizontalItemSpacing="15"
+                                                VerticalItemSpacing="15"/>
+                              </CollectionView.ItemsLayout>
+
+                      <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+
+                                   <yummy:PancakeView
+                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                        CornerRadius="10"
+                                        HeightRequest="80"
+                                        BackgroundColor="{StaticResource colorWhite}" >
+
+                                      <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                           <ImageButton
+                                                    HeightRequest="50"
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="3"
+                                                    Margin="10,0,0,0"
+                                                    Background="transparent"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="Center"
+                                                    Source="hamburgerMenu"
+                                                    WidthRequest="50"/>
+
+                                               <StackLayout Orientation="Vertical"
+                                                            Grid.Column="1"
+                                                            Grid.RowSpan="3"
+                                                            Margin="10,5,0,0"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Grid.Row="0">
+
+                                                    <StackLayout Orientation="Horizontal"
+                                                            VerticalOptions="CenterAndExpand">
+                                                           <Label
+                                                                Text="{Binding DoctorTitle}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="18"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                            <Label
+                                                                Text="{Binding FirstName}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                           <Label
+                                                                Text="{Binding LastName}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                    </StackLayout>
+                                                   <StackLayout Orientation="Horizontal">
+                                                       <Label
+                                                                Text="ID:"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                           <Label
+                                                                Text="{Binding DoctorID}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                       </StackLayout>
+                                               </StackLayout>
+                                       </Grid>
+                                    </yummy:PancakeView>
+                               </StackLayout>
+                            </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                  <Grid RowDefinitions="Auto"
+                        Grid.Row="5"
+                        Margin="0,20,0,20">
+
+                        <yummy:PancakeView
+                            BackgroundColor="#989898"
+                            Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                            CornerRadius="30"
+                            Margin="10,0,10,0"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand">
+                         <yummy:PancakeView.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="UserAddSchedule"/>
+                         </yummy:PancakeView.GestureRecognizers>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Schedule"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                        </yummy:PancakeView>
+
+                </Grid>
+             </Grid>
+           </yummy:PancakeView>
+                    </Grid>
+      </ScrollView>
+     </Grid>
+ </ContentPage>

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:PageViewModel="clr-namespace:Tobinco.ViewModel"
+    xmlns:localfont="clr-namespace:Tobinco.EmbeddedFont"
+    BackgroundColor="#F5F6F6"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.MedicalPostDoctorsPage">
+
+    <ContentPage.BindingContext>
+        <PageViewModel:StartSessionViewModel x:Name="HospitalList" />
+    </ContentPage.BindingContext>
+
+  <Grid>
+   
+        <Grid RowDefinitions="Auto, Auto, *" >
+
+            <Grid ColumnDefinitions="Auto, *, Auto"
+                  Padding="0,20,0,0"
+                  RowSpacing="20">
+
+                <ImageButton Source="baseline_arrow_back_ios_black_48"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             Margin="20,0,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             Clicked="BackButton"/>
+
+                <Label Grid.Column="1"
+                       Text="Medical Request Doctors"
+                       TextColor="#2D2942"
+                       FontSize="20"
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>
+
+
+             <yummy:PancakeView
+                        Margin="20,0,20,-20"
+                        Padding="10,0,0,0"
+                        Grid.Row="1"
+                        BackgroundColor="White"
+                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                        CornerRadius="30"
+                        HeightRequest="50"
+                        VerticalOptions="EndAndExpand">
+
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="Start"
+                                Source="search"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="25" />
+
+                            <renderers:BorderlessEntry
+                                ClearButtonVisibility="WhileEditing"
+                                FontSize="18"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Text"
+                                Placeholder=" Look for Medical Practitioner "
+                                PlaceholderColor="#99A1B3"
+                                TextColor="#484848" />
+                        </StackLayout>
+             </yummy:PancakeView>
+
+            <yummy:PancakeView
+                            Margin="0,30,0,0"
+                            Padding="30,30,30,0"
+                            BackgroundColor="#DADADA"
+                            CornerRadius="40,40,0,0"
+                            Grid.Row="2"
+                            VerticalOptions="FillAndExpand">
+
+                <StackLayout Orientation="Vertical">
+
+                                <yummy:PancakeView
+                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                        CornerRadius="10"
+                                        Margin="0,5"
+                                        Padding="10"
+                                        HeightRequest="50"
+                                        BackgroundColor="{StaticResource GreenColor}" >
+
+                                        <Label
+                                            x:Name="HospitalNamePass"
+                                            Text="HospitalName"
+                                            FontFamily="MaterialIcons"
+                                            TextTransform="Uppercase"
+                                            VerticalOptions="CenterAndExpand"
+                                            FontSize="24"
+                                            FontAttributes="Bold"
+                                            TextColor="#F8F8F8"/>
+                                          
+                                    </yummy:PancakeView>
+
+                   <CollectionView
+                            x:Name="DoctorEventList"
+                            ItemsSource="{Binding doctorList}"
+                            SelectionMode="Single"
+                            SelectionChanged="DoctorListClicked"
+                            VerticalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemsLayout>
+                               <GridItemsLayout Orientation="Vertical"
+                                                Span="1"
+                                                HorizontalItemSpacing="15"
+                                                VerticalItemSpacing="15"/>
+                              </CollectionView.ItemsLayout>
+
+                      <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+
+                                   <yummy:PancakeView
+                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                        CornerRadius="10"
+                                        HeightRequest="100"
+                                        BackgroundColor="{StaticResource colorWhite}" >
+
+                                      <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                           <ImageButton
+                                                    HeightRequest="50"
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="3"
+                                                    Margin="10,0,0,0"
+                                                    Background="transparent"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="Center"
+                                                    Source="hamburgerMenu"
+                                                    WidthRequest="50"/>
+
+                                               <StackLayout Orientation="Vertical"
+                                                            Grid.Column="1"
+                                                            Grid.RowSpan="3"
+                                                            Margin="10,15,0,0"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Grid.Row="0">
+
+                                                    <StackLayout Orientation="Horizontal"
+                                                            VerticalOptions="CenterAndExpand">
+                                                           <Label
+                                                                Text="{Binding DoctorTitle}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="18"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                            <Label
+                                                                Text="{Binding FirstName}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                           <Label
+                                                                Text="{Binding LastName}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                    </StackLayout>
+                                                   <StackLayout Orientation="Horizontal">
+                                                       <Label
+                                                                Text="ID:"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                           <Label
+                                                                Text="{Binding DoctorID}"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                       </StackLayout>
+                                               </StackLayout>
+
+                                       </Grid>
+                                    </yummy:PancakeView>
+                               </StackLayout>
+                            </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                    </StackLayout>
+            </yummy:PancakeView>
+        </Grid>
+    
+    </Grid>
+</ContentPage>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Padding="0,20,0,0"
+    BackgroundColor="#f3f3f3"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.ViewSchedulesPage">
+
+   <Grid
+         HorizontalOptions="FillAndExpand"
+         VerticalOptions="FillAndExpand">
+
+        <Grid
+              Margin="30"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+                <Label Text="EVENTS"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#000000"
+                        VerticalOptions="Center"/>
+
+                <CollectionView
+                    x:Name="eventList"
+                    Grid.Row="1"
+                    ItemsLayout="VerticalList">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                    <yummy:PancakeView
+                                    Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                    CornerRadius="10"
+                                    Margin="0,5"
+                                    Padding="10"
+                                    HeightRequest="140"
+                                    BackgroundColor="#6787FF"
+                                    VerticalOptions="EndAndExpand">
+                            
+                                    <Grid
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Image Source="clock.png"
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="End"
+                                                Grid.RowSpan="2"/>
+
+                                        <StackLayout Orientation="Vertical"
+                                                     Padding="0">
+
+                                            <StackLayout
+                                                Orientation="Horizontal"
+                                                Spacing="10">
+
+                                                <BoxView
+                                                    WidthRequest="12"
+                                                    HeightRequest="12"
+                                                    CornerRadius="6"
+                                                    BackgroundColor="#F8F8F8"
+                                                    VerticalOptions="Center"/>
+
+                                                     <Label
+                                                        Text="{Binding HospitalName}"
+                                                        FontSize="12"
+                                                        TextTransform="Uppercase"
+                                                        TextColor="#F8F8F8"/>
+                                           
+                                            </StackLayout>
+
+                                             <StackLayout
+                                                    Orientation="Horizontal" 
+                                                    Margin="40,0,0,0">
+
+                                                <Label
+                                                    Text="{Binding DocTitle}"
+                                                    FontSize="12"
+                                                    TextTransform="Uppercase"
+                                                    TextColor="#F8F8F8"/>
+
+                                                 <Label
+                                                    Text="{Binding DoctorFirstName}"
+                                                    FontSize="12"
+                                                    TextTransform="Uppercase"
+                                                    TextColor="#F8F8F8"/>
+
+                                                 <Label
+                                                    Text="{Binding DoctorLastName}"
+                                                    FontSize="12"
+                                                    TextTransform="Uppercase"
+                                                    TextColor="#F8F8F8"/>
+
+                                                 </StackLayout>
+
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Orientation="Horizontal"
+                                            Grid.Row="1"
+                                            HorizontalOptions="End"
+                                            Margin="10" Spacing="15">
+
+                                            <StackLayout>
+                                                <Label
+                                                    Text="{Binding ddd}"
+                                                    FontSize="35"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White"
+                                                    HorizontalOptions="End"/>
+
+                                                <Label
+                                                    Text="DAYS"
+                                                    FontSize="10"
+                                                    TextColor="White"
+                                                    Opacity="0.5"
+                                                    HorizontalOptions="End"
+                                                    Margin="0,-5,0,0"/>
+
+                                            </StackLayout>
+
+                                            <StackLayout>
+                                                <Label
+                                                    Text="{Binding TimeHours}"
+                                                    FontSize="35"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White"
+                                                    HorizontalOptions="End"/>
+
+                                                <Label
+                                                    Text="HOURS"
+                                                    FontSize="10"
+                                                    TextColor="White"
+                                                    Opacity="0.5"
+                                                    HorizontalOptions="End"
+                                                    Margin="0,-5,0,0"/>
+                                            </StackLayout>
+
+                                            <StackLayout>
+                                                <Label
+                                                    Text="{Binding TimeMinutes}"
+                                                    FontSize="35"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White"
+                                                    HorizontalOptions="End"/>
+
+                                                <Label
+                                                    Text="MINUTES"
+                                                    FontSize="10"
+                                                    TextColor="White"
+                                                    Opacity="0.5"
+                                                    HorizontalOptions="End"
+                                                    Margin="0,-5,0,0"/>
+
+                                            </StackLayout>
+
+                                            <StackLayout>
+                                                <Label
+                                                    Text="{Binding TimeSeconds}"
+                                                    FontSize="35"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White"
+                                                    HorizontalOptions="End"/>
+
+                                                <Label
+                                                    Text="SECONDS"
+                                                    FontSize="10"
+                                                    TextColor="White"
+                                                    Opacity="0.5"
+                                                    HorizontalOptions="End"
+                                                    Margin="0,-5,0,0"/>
+
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </Grid>
+                                </yummy:PancakeView>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        </Grid>        
+    </Grid>
+</ContentPage>

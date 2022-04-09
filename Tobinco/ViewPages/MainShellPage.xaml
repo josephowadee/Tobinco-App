@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:PageViewModel="clr-namespace:Tobinco.ViewModel"
+    Padding="0,20,0,0"
+    BackgroundColor="#F5F6F6"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.MainShellPage">
+
+    <ContentPage.BindingContext>
+        <PageViewModel:MainShellPageViewModel />
+    </ContentPage.BindingContext>
+
+    
+      <Grid>
+           <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                <Grid RowDefinitions="Auto, Auto, Auto, *" >
+
+                    <StackLayout Margin="20,0,20,0"
+                                    Spacing="10">
+                        <ImageButton
+                                HeightRequest="30"
+                                HorizontalOptions="Start"
+                                Source="hamburgerMenu"
+                                VerticalOptions="Start"
+                                WidthRequest="30"
+                                BackgroundColor="#000000"
+                                Clicked="MenuIconTapped"/>
+
+                        <Label
+                            FontAttributes="Italic"
+                            FontSize="28"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Good Morning"
+                            TextColor="#000000"
+                            VerticalOptions="StartAndExpand"
+                            WidthRequest="200" />
+
+                             <CollectionView
+                                        x:Name="TobincoUserFirstname"
+                                        VerticalOptions="StartAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        SelectionMode="Single"
+                                        HeightRequest="28"
+                                        VerticalScrollBarVisibility="Never">
+                                             <CollectionView.ItemTemplate>
+                                                  <DataTemplate>
+
+                                                <Label
+                                                    x:Name="UserFirstName"
+                                                    Margin="10,10"
+                                                    FontFamily="FontMontserratSemiBold"
+                                                    LineBreakMode="WordWrap"
+                                                    Text="{Binding FirstName}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="28"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    TextColor="#000000"
+                                                    VerticalOptions="StartAndExpand"
+                                                    WidthRequest="200"/>
+
+
+                                   
+                                           </DataTemplate>
+                                     </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                    </StackLayout>
+
+                    <Image
+                        HorizontalOptions="EndAndExpand"
+                        Source="bgImage"
+                        WidthRequest="200" />
+                   
+                     <yummy:PancakeView
+                            Padding="30,20,30,30"
+                            BackgroundColor="#E5E5E5"
+                            CornerRadius="40,20,0,0"
+                            Grid.Row="1"
+                            VerticalOptions="FillAndExpand">
+
+                             <StackLayout x:Name="GettingUserTime" >
+
+                                  <CollectionView
+                                        x:Name="tobinconStartTime"
+                                        VerticalOptions="StartAndExpand"
+                                        SelectionMode="Single"
+                                        HeightRequest="50"
+                                        VerticalScrollBarVisibility="Never">
+                                             <CollectionView.ItemTemplate>
+                                                  <DataTemplate>
+                                                       <yummy:PancakeView
+                                                                Grid.Row="3"
+                                                                Grid.RowSpan="5"
+                                                                Grid.Column="2"
+                                                                BackgroundColor="#f5f5f5"
+                                                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                                CornerRadius="4"
+                                                                Margin="10,0,10,20"
+                                                                HeightRequest="40"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                HorizontalOptions="EndAndExpand">
+
+                                                            <Label
+                                                                x:Name="SetStartTime"
+                                                                Margin="10,10"
+                                                                FontFamily="FontMontserratSemiBold"
+                                                                FontSize="20"
+                                                                HorizontalTextAlignment="Center"
+                                                                LineBreakMode="WordWrap"
+                                                                Text="{Binding StartTime}"/>
+         
+                                                    </yummy:PancakeView>
+                                   
+                                           </DataTemplate>
+                                     </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+
+                                    <Grid Margin="5" ColumnSpacing="20" RowSpacing="30">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="230" />
+                                                <RowDefinition Height="230" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                           <yummy:PancakeView
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="10"
+                                                    BackgroundColor="{StaticResource GreenColor}"
+                                                    Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                    CornerRadius="15">
+                                                            <yummy:PancakeView.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="SartSesion" />
+                                                            </yummy:PancakeView.GestureRecognizers>
+                                                            <StackLayout>
+                                                                <Image Source="im1" />
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="20"
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Text="Start Session"
+                                                                    TextColor="#F5F5F5"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                            </StackLayout>
+                                           </yummy:PancakeView>
+
+                                           <yummy:PancakeView
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Padding="10"
+                                                    BackgroundColor="{StaticResource GreenColor}"
+                                                    Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                    CornerRadius="15">
+                                                    <yummy:PancakeView.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="MedicalTapped" />
+                                                    </yummy:PancakeView.GestureRecognizers>
+
+                                                     <StackLayout>
+                                                                <Image Source="im2" />
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="20"
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Text="Medical Supply"
+                                                                    TextColor="#F5F5F5"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                     </StackLayout>
+                                            </yummy:PancakeView>
+
+                                            <yummy:PancakeView
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Padding="10"
+                                                    BackgroundColor="{StaticResource GreenColor}"
+                                                    Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                    CornerRadius="15">
+                                                    <yummy:PancakeView.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="PlanItenary" />
+                                                    </yummy:PancakeView.GestureRecognizers>
+
+                                                    <StackLayout>
+                                                            <Image Source="im3" />
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                FontSize="20"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                HorizontalTextAlignment="Center"
+                                                                Text="Plan Itinenary"
+                                                                TextColor="#F5F5F5"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                     </StackLayout>
+                                            </yummy:PancakeView>
+
+                                             <yummy:PancakeView
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            Padding="10"
+                                                            BackgroundColor="{StaticResource GreenColor}"
+                                                            Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                            CornerRadius="15">
+                                                           <yummy:PancakeView.GestureRecognizers>
+                                                               <TapGestureRecognizer Tapped="ScheduleTapped" />
+                                                           </yummy:PancakeView.GestureRecognizers>
+                                                            <StackLayout>
+                                                                <Image Source="im4" />
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="20"
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Text="View Schedules"
+                                                                    TextColor="#F5F5F5"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                            </StackLayout>
+
+                                              </yummy:PancakeView>
+                                     </Grid>
+                                            <Label
+                                                x:Name="ClockLocation"
+                                                Margin="0,20,0,0"
+                                                FontAttributes="Bold"
+                                                FontSize="20"
+                                                HorizontalOptions="CenterAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Current Location"
+                                                TextColor="#791AE5"
+                                                VerticalOptions="Center" >
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OpenNativeMap"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+
+                                  
+                             </StackLayout>
+                     </yummy:PancakeView>
+                </Grid>
+            </ScrollView>
+
+              <Grid x:Name="MenuGrid" IsVisible="False">
+                        <BoxView x:Name="MenuOverlay" BackgroundColor="Black" Opacity="0.35">
+                            <BoxView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OverlayTapped"/>
+                            </BoxView.GestureRecognizers>
+                        </BoxView>
+
+                        <Grid x:Name="MenuView" WidthRequest="240" BackgroundColor="#F5F6F6" 
+                              HorizontalOptions="Start" TranslationX="-240">
+                            <Grid.Clip>
+                                <PathGeometry Figures="M0,0V511.043H140.714l86.992-116.012V0Z"/>
+                            </Grid.Clip>
+
+                            <StackLayout Margin="30,60" Spacing="10" BindableLayout.ItemsSource="{Binding MenuList}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal" Spacing="20">
+                                            <Grid Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Start"
+                                                  HeightRequest="46" WidthRequest="46">
+                                                <Ellipse WidthRequest="46" HeightRequest="46" Fill="White" Opacity="0.5"/>
+                                                <Image Source="{Binding Icon}" WidthRequest="22" HeightRequest="22"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" />
+                                            </Grid>
+                                            <Label Text="{Binding Name}" TextColor="#791AE5" FontSize="20" VerticalOptions="Center"
+                                                    FontFamily="NormalFont"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+               </Grid>
+         
+      </Grid>
+            
+</ContentPage>

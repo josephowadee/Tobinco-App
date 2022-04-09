@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+        xmlns:renderers="clr-namespace:Tobinco.Renderers"
+        xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+        xmlns:PageViewModel="clr-namespace:Tobinco.ViewModel"
+        NavigationPage.HasNavigationBar="False"
+        BackgroundColor="#FFFFFF"
+        mc:Ignorable="d"
+        x:Class="Tobinco.ViewPages.MedicalPostBillPage">
+
+    <ContentPage.BindingContext>
+        <PageViewModel:MedicalRequestViewModel  />
+    </ContentPage.BindingContext>
+
+       <Grid>
+   
+        <Grid RowDefinitions="Auto, Auto, *" >
+
+            <Grid ColumnDefinitions="Auto, *, Auto"
+                  Padding="0,20,0,0"
+                  RowSpacing="20">
+
+                <ImageButton Source="baseline_arrow_back_ios_black_48"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             Margin="20,0,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             Clicked="BackButton"/>
+
+                <Label Grid.Column="1"
+                       Text="Medical Supply"
+                       TextColor="#2D2942"
+                       FontSize="20"
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>
+
+
+             <Label Text="{Binding SelectionList}"/>
+
+             <yummy:PancakeView
+                        Margin="20,0,20,-20"
+                        Padding="10,0,0,0"
+                        Grid.Row="1"
+                        BackgroundColor="White"
+                        Border="{yummy:BorderMarkup Color=#d6d6d6, Thickness='1'}"
+                        CornerRadius="30"
+                        HeightRequest="50"
+                        VerticalOptions="CenterAndExpand">
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="Start"
+                            Source="search"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="25" />
+
+                        <renderers:BorderlessEntry
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Text"
+                            Placeholder=" Search here "
+                            PlaceholderColor="#99A1B3"
+                            TextColor="#484848" />
+                    </StackLayout>
+             </yummy:PancakeView>
+
+                 <yummy:PancakeView
+                            Margin="0,30,0,0"
+                            Padding="30,30,30,0"
+                            BackgroundColor="#DADADA"
+                            CornerRadius="40,40,0,0"
+                            Grid.Row="2"
+                            VerticalOptions="FillAndExpand">
+
+             <StackLayout Orientation="Vertical">
+                    <CollectionView
+                            x:Name="tobincosupplies"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            VerticalOptions="StartAndExpand"
+                            SelectionMode="Single"
+                            VerticalScrollBarVisibility="Never"
+                            ItemsSource="{Binding MedicalItems}">
+
+                        <CollectionView.ItemsLayout>
+                               <GridItemsLayout Orientation="Vertical"
+                                                Span="1"
+                                                HorizontalItemSpacing="10"
+                                                VerticalItemSpacing="10"/>
+                              </CollectionView.ItemsLayout>
+                         <CollectionView.ItemTemplate>
+                               <DataTemplate>
+
+                                  <Grid>
+                                      <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                   <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                            Value="5" />
+                                                        <Setter TargetName="CheckIcon"
+                                                                Property="Image.IsVisible"
+                                                                Value="False"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Padding"
+                                                            Value="5" />
+                                                        <Setter TargetName="CheckIcon"
+                                                                Property="Image.IsVisible"
+                                                                Value="True"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                            </VisualStateGroup>
+                                       </VisualStateManager.VisualStateGroups>
+
+                                       <shadows:Shadows CornerRadius="38"
+                                                        Shades="{shadows:SingleShade BlurRadius=10, Offset='0,8', Opacity=0.5, Color={StaticResource colorYellow99F4}}"> 
+                                        <yummy:PancakeView
+                                            Grid.Row="0"
+                                            Padding="4"
+                                            BackgroundColor="{StaticResource colorGrayF6}"
+                                            CornerRadius="12">
+
+                                            <Grid RowDefinitions="auto, auto, auto, auto, auto"
+                                                  ColumnDefinitions="*,*,*"
+                                                RowSpacing="0">
+
+                                               <Image
+                                                    x:Name="CheckIcon"
+                                                    Margin="2,4,0,0"
+                                                    Grid.Row="0"
+                                                    HeightRequest="30"
+                                                    Grid.Column="2"
+                                                    BackgroundColor="{StaticResource colorRedFF}"
+                                                    VerticalOptions="Start"
+                                                    HorizontalOptions="End"
+                                                    Source="baseline_done_white_48"/>
+                                                     
+                                                  
+                                                <yummy:PancakeView
+                                                        Padding="2,4"
+                                                        BackgroundColor="{StaticResource colorRedFF}"
+                                                        CornerRadius="12,0,0,20"
+                                                        HeightRequest="20"
+                                                        HorizontalOptions="Start"
+                                                        VerticalOptions="Start"
+                                                        WidthRequest="30">
+
+                                                        <Label HorizontalOptions="Center">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        FontFamily="FontMontserratSemiBold"
+                                                                        FontSize="8"
+                                                                        Text="{Binding ItemDiscount, StringFormat='{0:N0}%'}"
+                                                                        TextColor="{StaticResource colorWhite}" />
+                                                                    <Span
+                                                                        FontFamily="FontMontserratSemiBold"
+                                                                        FontSize="8"
+                                                                        Text="&#10;OFF"
+                                                                        TextColor="{StaticResource colorWhite}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    <yummy:PancakeView.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding ItemDiscount}"
+                                                            TargetType="yummy:PancakeView"
+                                                            Value="0">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </yummy:PancakeView.Triggers>
+                                                </yummy:PancakeView>
+
+                                             
+
+                                                <StackLayout Orientation="Vertical"
+                                                             Grid.Row="0"
+                                                             Grid.RowSpan="5"
+                                                             Grid.Column="0">
+
+                                                  <ffimage:CachedImage
+                                                        IsVisible="False"
+                                                        Margin="0"
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="120"
+                                                        Source="{Binding ItemImage}" />
+
+                                                   <Label
+                                                        Margin="10,0"
+                                                        FontFamily="FontMontserratSemiBold"
+                                                        FontSize="16"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="WordWrap"
+                                                        Text="{Binding ItemTitle}"  />
+
+                                                  
+
+                                                </StackLayout>
+
+                                              <yummy:PancakeView
+                                                        Grid.Row="3"
+                                                        Grid.RowSpan="5"
+                                                        Grid.Column="2"
+                                                        BackgroundColor="#959595"
+                                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                        CornerRadius="4"
+                                                        Margin="10,0,10,20"
+                                                        HeightRequest="40"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="EndAndExpand">
+
+                                                   <Label
+                                                        Margin="10,10"
+                                                        FontFamily="FontMontserratSemiBold"
+                                                        FontSize="16"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="WordWrap"
+                                                        Text="{Binding ItemPrice, StringFormat='{0:C}'}"  />
+
+                                                </yummy:PancakeView>
+                                           </Grid>
+                                        </yummy:PancakeView>
+                                     </shadows:Shadows>
+                                  </Grid>
+                               </DataTemplate>
+                         </CollectionView.ItemTemplate>
+                   </CollectionView>
+
+                     <yummy:PancakeView
+                                BackgroundColor="#959595"
+                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                CornerRadius="4"
+                                Margin="10,0,10,20"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand">
+                             
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text=""
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                            </yummy:PancakeView>
+
+                 <yummy:PancakeView
+                                Grid.Row="4"
+                                BackgroundColor="#959595"
+                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                CornerRadius="4"
+                                Margin="10,0,10,20"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand">
+                             <yummy:PancakeView.GestureRecognizers>
+                                 <TapGestureRecognizer Tapped="PostMedicalBill" />
+                             </yummy:PancakeView.GestureRecognizers>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Next"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                            </yummy:PancakeView>
+                      </StackLayout>
+            </yummy:PancakeView>                            
+         </Grid>
+      </Grid>
+ </ContentPage>
+
+                

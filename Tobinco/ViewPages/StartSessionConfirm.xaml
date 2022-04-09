@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:PageViewModel="clr-namespace:Tobinco.ViewModel"
+    BackgroundColor="#F5F6F6"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.StartSessionConfirm">
+
+     <Grid>
+   
+        <Grid RowDefinitions="Auto, Auto, *" >
+
+            <Grid ColumnDefinitions="Auto, *, Auto"
+                  Padding="0,20,0,0"
+                  RowSpacing="20">
+
+                <ImageButton Source="baseline_arrow_back_ios_black_48"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             Margin="20,0,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             Clicked="BackButton"/>
+
+                <Label Grid.Column="1"
+                       Text="Start Session"
+                       TextColor="#2D2942"
+                       FontSize="20"
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>
+
+                 <Image
+                        HorizontalOptions="EndAndExpand"
+                        HeightRequest="100"
+                        Source="bgImage"
+                        Grid.Row="1" />
+
+                   <yummy:PancakeView
+                            Margin="0,30,0,0"
+                            Padding="30,30,30,0"
+                            BackgroundColor="#DADADA"
+                            CornerRadius="40,40,0,0"
+                            Grid.Row="2"
+                            VerticalOptions="FillAndExpand">
+
+                       <StackLayout Orientation="Vertical">
+                                 <Label
+                                        x:Name="clocktime"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Clocked in Time"
+                                        TextColor="#000000"
+                                        Margin="0,0,0,10"
+                                        VerticalOptions="Center">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SartSessionTimer" />
+                                </Label.GestureRecognizers>
+                                </Label>
+
+                             <yummy:PancakeView
+                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                        CornerRadius="10"
+                                        HeightRequest="100"
+                                        BackgroundColor="{StaticResource colorWhite}" >
+
+                                      <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                           <ImageButton
+                                                    x:Name="DocImage"
+                                                    HeightRequest="50"
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="3"
+                                                    Margin="10,0,0,0"
+                                                    Background="transparent"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="Center"
+                                                    Source="hamburgerMenu"
+                                                    WidthRequest="50"/>
+
+                                               <StackLayout Orientation="Vertical"
+                                                            Grid.Column="1"
+                                                            Grid.RowSpan="3"
+                                                            Margin="10,15,0,0"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Grid.Row="0">
+
+                                                    <StackLayout Orientation="Horizontal"
+                                                            VerticalOptions="CenterAndExpand">
+                                                           <Label
+                                                                x:Name="DTitle"
+                                                                Text=""
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="18"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                            <Label
+                                                                x:Name="DoctorFname"
+                                                                Text=""
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+
+                                                           <Label
+                                                                x:Name="DoctorLname"
+                                                                Text=""
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                    </StackLayout>
+                                                   <StackLayout Orientation="Horizontal">
+                                                       <Label
+                                                                Text="ID:"
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                           <Label
+                                                                x:Name="DoctorIdNum"
+                                                                Text=""
+                                                                FontFamily="MaterialIcons"
+                                                                TextTransform="Default"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                FontSize="20"
+                                                                FontAttributes="Bold"
+                                                                TextColor="#000000"/>
+                                                       </StackLayout>
+                                               </StackLayout>
+
+                                               <yummy:PancakeView
+                                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                                        CornerRadius="10"
+                                                        Grid.Column="2"
+                                                        Grid.Row="2"
+                                                        Grid.RowSpan="2"
+                                                        Margin="5"
+                                                        Padding="10,3,10,3"
+                                                        HeightRequest="40"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="End"
+                                                        BackgroundColor="#4E4E50" >
+
+                                                   <yummy:PancakeView.GestureRecognizers>
+                                                       <TapGestureRecognizer Tapped="CallDoctor" />
+                                                   </yummy:PancakeView.GestureRecognizers>
+
+                                                    <Label
+                                                        Text="Tap to call"
+                                                        FontFamily="MaterialIcons"
+                                                        TextTransform="Default"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        FontSize="14"
+                                                        FontAttributes="Bold"
+                                                        TextColor="#F8F8F8"/>
+                                               </yummy:PancakeView>
+                                 </Grid>
+                             </yummy:PancakeView>
+
+                             <yummy:PancakeView
+                                BackgroundColor="{StaticResource GreenColor}"
+                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                CornerRadius="30"
+                                Margin="10,0,10,20"
+                                HeightRequest="50"
+                                VerticalOptions="EndAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                             <yummy:PancakeView.GestureRecognizers>
+                                 <TapGestureRecognizer Tapped="StartSession" />
+                             </yummy:PancakeView.GestureRecognizers>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Start Session"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </yummy:PancakeView>                             
+          </Grid>
+     </Grid>
+    </ContentPage>

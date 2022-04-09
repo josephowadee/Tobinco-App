@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:PageViewModel="clr-namespace:Tobinco.ViewModel"
+    xmlns:localfont="clr-namespace:Tobinco.EmbeddedFont"
+    BackgroundColor="#F5F6F6"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Tobinco.ViewPages.StartSession">
+
+
+    <ContentPage.BindingContext>
+        <PageViewModel:StartSessionViewModel x:Name="HospitalList" />
+    </ContentPage.BindingContext>
+
+
+   <Grid>
+   
+        <Grid RowDefinitions="Auto, Auto, Auto, *" >
+
+            <Grid ColumnDefinitions="Auto, *, Auto"
+                  Padding="0,20,0,30"
+                  RowSpacing="20">
+
+                <ImageButton Source="baseline_arrow_back_ios_black_48"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             Margin="20,0,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             Clicked="BackButton"/>
+
+                <Label Grid.Column="1"
+                       Text="Start Session"
+                       TextColor="#2D2942"
+                       FontSize="20"
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>
+
+             <yummy:PancakeView
+                        Margin="20,0,20,-20"
+                        Padding="10,0,0,0"
+                        Grid.Row="1"
+                        BackgroundColor="White"
+                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                        CornerRadius="30"
+                        HeightRequest="50"
+                        VerticalOptions="EndAndExpand">
+
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="Start"
+                                Source="search"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="25" />
+
+                            <renderers:BorderlessEntry
+                                ClearButtonVisibility="WhileEditing"
+                                FontSize="18"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Text"
+                                Placeholder=" Look for Hospital "
+                                PlaceholderColor="#99A1B3"
+                                TextColor="#484848" />
+                        </StackLayout>
+             </yummy:PancakeView>
+
+            <yummy:PancakeView
+                            Margin="0,30,0,0"
+                            Padding="30,30,30,0"
+                            BackgroundColor="#DADADA"
+                            CornerRadius="40,40,0,0"
+                            Grid.Row="2"
+                            VerticalOptions="FillAndExpand">
+
+                   <CollectionView
+                            x:Name="eventList"
+                            ItemsLayout="VerticalList"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding HospitalSelectedItem}"
+                            SelectionChanged="hospitalSelected"
+                            ItemsSource="{Binding hospitalList}">
+
+                      <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView>
+                                   <yummy:PancakeView
+                                        Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                        CornerRadius="10"
+                                        Margin="0,5"
+                                        Padding="10"
+                                        HeightRequest="50"
+                                        BackgroundColor="{StaticResource GreenColor}" >
+
+                                        <Label
+                                            Text="{Binding HospitalName}"
+                                            FontFamily="MaterialIcons"
+                                            TextTransform="Uppercase"
+                                            VerticalOptions="CenterAndExpand"
+                                            FontSize="24"
+                                            FontAttributes="Bold"
+                                            TextColor="#F8F8F8"/>
+                                          
+                                    </yummy:PancakeView>
+                                </ContentView>
+                            </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </yummy:PancakeView>
+        </Grid>
+    
+    </Grid>
+</ContentPage>

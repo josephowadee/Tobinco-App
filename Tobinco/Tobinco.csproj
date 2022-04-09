@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
+    <PackageReference Include="Sharpnado.Forms.HorizontalListView" Version="1.8.2" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.4.0" />
+    <PackageReference Include="Sharpnado.Shadows" Version="1.2.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Renderers\" />
+    <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="ViewModel\" />
+    <None Remove="ViewPages\" />
+    <None Remove="Model\" />
+    <None Remove="Converters\" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="EmbeddedFont\" />
+    <None Remove="Sharpnado.Forms.HorizontalListView" />
+    <None Remove="EmbeddedFont\materialicon.ttf" />
+    <None Remove="EmbeddedFont\materialdesignicons.ttf" />
+    <None Remove="EmbeddedFont\fontello.ttf" />
+    <None Remove="EmbeddedFont\muli-black.ttf" />
+    <None Remove="EmbeddedFont\muli-bold.ttf" />
+    <None Remove="EmbeddedFont\muli-regular.ttf" />
+    <None Remove="EmbeddedFont\opensans-semibold.ttf" />
+    <None Remove="Xamarin.FFImageLoading.Forms" />
+    <None Remove="Xamarin.Plugin.SharedTransitions" />
+    <None Remove="Sharpnado.Shadows" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="DatabbaseServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="ViewPages\" />
+    <Folder Include="Model\" />
+    <Folder Include="Converters\" />
+    <Folder Include="EmbeddedFont\" />
+    <Folder Include="DatabbaseServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedFont\materialicon.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\materialdesignicons.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\fontello.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\muli-black.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\muli-bold.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\muli-regular.ttf" />
+    <EmbeddedResource Include="EmbeddedFont\opensans-semibold.ttf" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:localfont="clr-namespace:Tobinco.EmbeddedFont"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource GreenColor}"
+    Padding="0,40,0,0"
+    mc:Ignorable="d"
+    x:Class="Tobinco.ViewPages.UserLoginPage">
+
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout >
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="40"
+                        Margin="0,60,0,40"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Text="Walgreens"
+                        TextColor="#F6F6F6" />
+
+                    <StackLayout Spacing="20"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="StartAndExpand"
+                                 Padding="30,5,30,0">
+                      
+                        <yummy:PancakeView
+                                Padding="10,0,0,0"
+                                BackgroundColor="White"
+                                Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                CornerRadius="30"
+                                Shadow="{yummy:ShadowMarkup Color=#791AE5}"
+                                HeightRequest="50">
+
+                            <renderers:BorderlessEntry
+                                x:Name="UserSignMail"
+                                ClearButtonVisibility="WhileEditing"
+                                FontSize="18"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Email"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                Placeholder="Email "
+                                PlaceholderColor="#99A1B3"
+                                TextColor="#484848"  />
+
+                        </yummy:PancakeView>
+               
+                        <yummy:PancakeView
+                            Padding="10,0,0,0"
+                            BackgroundColor="White"
+                            Margin="0,20,0,0"
+                            Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                            CornerRadius="30"
+                            HeightRequest="50">
+
+                            <renderers:BorderlessEntry
+                                x:Name="UserSignPassword"
+                                ClearButtonVisibility="WhileEditing"
+                                FontSize="18"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Text"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                IsPassword="True"
+                                Placeholder="Password "
+                                PlaceholderColor="#99A1B3"
+                                TextColor="#484848"  />
+                        </yummy:PancakeView>
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox
+                                HorizontalOptions="Start">
+                                 <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Color"
+                                                        Value="#F6F6F6" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="IsChecked">
+                                            <VisualState.Setters>
+                                                <Setter Property="Color"
+                                                        Value="Green" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                             </CheckBox>
+
+                              <Label
+                                    FontAttributes="None"
+                                    FontSize="15"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="Forget Password?"
+                                    TextColor="#F6F6F6" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="forgetPassword"/>
+                                    </Label.GestureRecognizers>
+                             </Label>
+
+                            </StackLayout>
+
+                            <yummy:PancakeView
+                                BackgroundColor="#F6F6F6"
+                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                CornerRadius="30"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand">
+
+                                <yummy:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LoginClick" />
+                                </yummy:PancakeView.GestureRecognizers>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Sign In"
+                                    TextColor="{StaticResource GreenColor}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </yummy:PancakeView>
+
+                              <Label
+                                    FontAttributes="None"
+                                    FontSize="25"
+                                    HorizontalOptions="Center"
+                                    Text="Sign Up"
+                                    TextColor="#F6F6F6" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="UserSignUp"/>
+                                    </Label.GestureRecognizers>
+                               </Label>
+                       </StackLayout>
+
+         </StackLayout>
+     </ScrollView>
+</ContentPage>

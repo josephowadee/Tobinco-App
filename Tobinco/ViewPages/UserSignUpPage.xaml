@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:Tobinco.Renderers"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource GreenColor}"
+    Padding="0,40,0,0"
+    mc:Ignorable="d"
+    x:Class="Tobinco.ViewPages.UserSignUpPage">
+
+
+     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout >
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="40"
+                        Margin="0,60,0,40"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Text="Walgreens"
+                        TextColor="#F6F6F6" />
+
+                    <StackLayout Spacing="20"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="StartAndExpand"
+                                 Padding="30,5,30,0">
+                      
+                         <yummy:PancakeView
+                                Padding="10,0,0,0"
+                                BackgroundColor="White"
+                                Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                CornerRadius="30"
+                                Shadow="{yummy:ShadowMarkup Color=#791AE5}"
+                                HeightRequest="50">
+
+                             <renderers:BorderlessEntry
+                                    ClearButtonVisibility="WhileEditing"
+                                    FontSize="18"
+                                    x:Name="UserFirstName"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    BackgroundColor=" #bcf5bc"
+                                    Keyboard="Text"
+                                    Placeholder="First Name "
+                                    PlaceholderColor="#99A1B3"
+                                    TextColor="#484848"  />
+                         </yummy:PancakeView>
+                      
+                          <yummy:PancakeView
+                                    Padding="10,0,0,0"
+                                    BackgroundColor="White"
+                                    Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                    CornerRadius="30"
+                                    HeightRequest="50">
+
+                          <renderers:BorderlessEntry
+                                    ClearButtonVisibility="WhileEditing"
+                                    FontSize="18"
+                                    x:Name="UserLastName"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    BackgroundColor=" #bcf5bc"
+                                    Keyboard="Text"
+                                    Placeholder="Last Name "
+                                    PlaceholderColor="#99A1B3"
+                                    TextColor="#484848"  />
+                                </yummy:PancakeView>
+                          
+                      
+                          <yummy:PancakeView
+                                    Padding="10,0,0,0"
+                                    BackgroundColor="White"
+                                    Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                    CornerRadius="30"
+                                    HeightRequest="50">
+
+                          <renderers:BorderlessEntry
+                                    ClearButtonVisibility="WhileEditing"
+                                    FontSize="18"
+                                    x:Name="UserEmail"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    BackgroundColor=" #bcf5bc"
+                                    Keyboard="Email"
+                                    Placeholder="Email Address "
+                                    PlaceholderColor="#99A1B3"
+                                    TextColor="#484848"  />
+                          </yummy:PancakeView>
+                         
+
+                          <yummy:PancakeView
+                                    Padding="10,0,0,0"
+                                    BackgroundColor="White"
+                                    Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                    CornerRadius="30"
+                                    HeightRequest="50">
+
+                          <renderers:BorderlessEntry
+                                    ClearButtonVisibility="WhileEditing"
+                                    FontSize="18"
+                                    x:Name="UserTele"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    Keyboard="Telephone"
+                                    BackgroundColor=" #bcf5bc"
+                                    Placeholder="Phone Number "
+                                    PlaceholderColor="#99A1B3"
+                                    TextColor="#484848"  />
+                           </yummy:PancakeView>
+                      
+                          <yummy:PancakeView
+                                    Padding="10,0,0,0"
+                                    BackgroundColor="White"
+                                    Border="{yummy:BorderMarkup Color=#791AE5, Thickness='1'}"
+                                    CornerRadius="30"
+                                    HeightRequest="50">
+
+                          <renderers:BorderlessEntry
+                                    ClearButtonVisibility="WhileEditing"
+                                    FontSize="18"
+                                    x:Name="UserAddress"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    BackgroundColor=" #bcf5bc"
+                                    Keyboard="Text"
+                                    Placeholder="Address "
+                                    PlaceholderColor="#99A1B3"
+                                    TextColor="#484848"  />
+                           </yummy:PancakeView>
+                      
+                            
+                          <yummy:PancakeView
+                                BackgroundColor="#F6F6F6"
+                                Border="{yummy:BorderMarkup Color=#ffffff, Thickness='1'}"
+                                CornerRadius="30"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand">
+                                <yummy:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UserRegister" />
+                                </yummy:PancakeView.GestureRecognizers>
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Create Account"
+                                    TextColor="{StaticResource GreenColor}"
+                                    VerticalOptions="CenterAndExpand" />
+                           </yummy:PancakeView>
+
+
+                            <Label
+                                FontAttributes="None"
+                                FontSize="18"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="#99A1B3"
+                                VerticalOptions="CenterAndExpand" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="I Have an Account? " ></Span>
+                                        <Span TextColor="#791AE5" Text="Sign In" >
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="UserSignIn"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+            </StackLayout>
+     </ScrollView>
+</ContentPage>
